@@ -1,0 +1,61 @@
+import random
+print("欢迎来到澳门皇家赌场，漂亮荷官在线发牌")
+gm=input("是否购买筹码y /n")
+dangqian=0
+ends=0
+if gm=="n" :
+	print('保安，拖出去打死!!')
+	dangqian=0
+	ends=1
+else :
+	cz=int(input("兄弟，充多少？我们这里是高档会所，最低充值50"))
+	ends=0
+	if cz<50 :
+		print("保安，这个人侮辱我，拖出去打死")
+		ends=1
+while ends<=0:
+	dangqian=cz
+	xiazhu=int(input("输入下注的筹码"))
+	while dangqian>=50 :
+		if 50>xiazhu or dangqian<=xiazhu :
+			print("下注失败，连规则都不知道，保安，轰出去")
+			ends=1
+			break
+			while 50<xiazhu<dangqian :
+				print("您下注了%s的筹码，还剩%s筹码"%(xiazhu,dangqian-xiazhu))
+				daxiao=input("请问你选择买大还是买小")
+				print("您选择了买%s"%daxiao)
+				sjs=random.randint(1,6)
+				
+				if daxiao=="大" and 4<=sjs<=6 :
+					dangqian=dangqian+xiazhu
+					print("您赢了，还剩%s筹码"%dangqian)
+					jg=input("是否继续游戏,yes或者no")
+					if jg!="yes":
+						print("我们欢迎您的下次到来！！！")
+						ends=1
+						break
+				elif daxiao=="小" and 1<=sjs<=3 :
+					dangqian=dangqian+xiazhu
+					print("您赢了，还剩%s筹码"%dangqian)
+					jg=input("是否继续游戏,yes或者no")
+					if jg!="yes":
+						print("我们欢迎您的下次到来！！！")
+						ends=1
+						break
+				else :
+					dangqian=dangqian-xiazhu
+					print("很抱歉，您输了，还剩%s筹码"%dangqian)
+					jg=input("是否继续游戏,yes或者no")
+					if jg!="yes":
+						print("我们欢迎您的下次到来！！！")
+						ends=1
+						break
+				if dangqian<=50 :
+					print("穷光蛋，赶紧滚，没钱还想玩")
+					ends=1
+			print("下注无效")
+		
+#		else :
+#			print("您的筹码不足")
+#			ends=1
